@@ -1,0 +1,4 @@
+blog/__pycache__
+blog/migrations/__pycache__
+blango/__pycache__
+db.sqlite3
