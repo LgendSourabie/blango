@@ -97,6 +97,7 @@ class Dev(Configuration):
         'django.contrib.staticfiles',
         'blog',
         'rest_framework',
+        'rest_framework.authtoken',
         'crispy_forms',
         'crispy_bootstrap5',
         "debug_toolbar",
@@ -214,6 +215,14 @@ class Dev(Configuration):
     # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+    REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+    }
 
 
 class Prod(Dev):
