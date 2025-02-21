@@ -95,6 +95,7 @@ class Dev(Configuration):
         'django.contrib.messages',
         "django.contrib.sites",
         'django.contrib.staticfiles',
+        'drf_yasg',
         'blog',
         'rest_framework',
         'rest_framework.authtoken',
@@ -217,7 +218,7 @@ class Dev(Configuration):
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
     REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
+      "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
@@ -225,6 +226,13 @@ class Dev(Configuration):
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
     ],
+    }
+
+    SWAGGER_SETTINGS = {
+      "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
     }
 
 
