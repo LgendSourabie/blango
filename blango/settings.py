@@ -223,9 +223,15 @@ class Dev(Configuration):
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
-    "DEFAULT_PERMISSION_CLASSES": [
+      "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
     ],
+     "DEFAULT_THROTTLE_RATES": {
+            "anon_sustained": "500/day",
+            "anon_burst": "10/minute",
+            "user_sustained": "5000/day",
+            "user_burst": "100/minute",
+        },
     }
 
     SWAGGER_SETTINGS = {
