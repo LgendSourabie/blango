@@ -31,6 +31,11 @@ urlpatterns +=[
     path('swagger.<str:doc_format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path("swagger/", schema_view.with_ui("swagger", cache_timeout=0),name="schema-swagger-ui"),
     path("", include(router.urls)),
+    path(
+        "posts/by-time/<str:period_name>/",
+        PostViewSet.as_view({"get": "list"}),
+        name="posts-by-time",
+    ),
 ]
 
 # urlpatterns = format_suffix_patterns(urlpatterns)
