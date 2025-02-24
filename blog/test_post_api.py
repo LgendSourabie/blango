@@ -43,7 +43,7 @@ class PostApiTestCase(TestCase):
       """It should list all posts"""
 
       resp = self.client.get("/api/v1/posts/")
-      data = resp.json()
+      data = resp.json()["results"]
       self.assertEqual(len(data), 2)
 
       for post_dict in data:

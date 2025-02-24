@@ -103,6 +103,7 @@ class Dev(Configuration):
         'crispy_bootstrap5',
         "debug_toolbar",
         "blango_auth",
+        'django_filters',
         "allauth",
         "allauth.account",
         "allauth.socialaccount",
@@ -226,12 +227,24 @@ class Dev(Configuration):
       "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
     ],
+     "DEFAULT_FILTER_BACKENDS": [
+            "django_filters.rest_framework.DjangoFilterBackend",
+             "rest_framework.filters.OrderingFilter",
+        ],
+      'DEFAULT_THROTTLE_CLASSES': [
+                'rest_framework.throttling.AnonRateThrottle',
+                'rest_framework.throttling.UserRateThrottle'
+            ],
      "DEFAULT_THROTTLE_RATES": {
+            "anon":"500/day",
+            "user":"5000/day",
             "anon_sustained": "500/day",
             "anon_burst": "10/minute",
             "user_sustained": "5000/day",
             "user_burst": "100/minute",
         },
+      "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+      "PAGE_SIZE": 100,
     }
 
     SWAGGER_SETTINGS = {
